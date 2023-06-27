@@ -1,0 +1,10 @@
+.feed {
+  .image {
+    position: relative;
+
+    img {
+      object-fit: contain;
+      position: relative !important;
+    }
+  }
+}

@@ -1,10 +1,7 @@
 import './globals.scss'
 import { Inter } from 'next/font/google'
 import { Providers } from "@/store/provider";
-import Header from './components/header/header';
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
-config.autoAddCss = false;
+import Header from '../components/header/header';
 
 const inter = Inter({ subsets: ['latin'] })
 

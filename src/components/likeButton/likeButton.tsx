@@ -1,0 +1,33 @@
+'use client';
+
+import { useState } from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+
+interface LikeButtonProps {
+  isLiked: boolean
+  onChange: (a: boolean) => void;
+}
+
+export default function LikeButton({ isLiked, onChange }: LikeButtonProps) {
+  const [like, setLike] = useState<boolean>(isLiked);
+  
+  const handleClick = () => {
+    setLike(!like);
+    onChange(like);
+  }
+
+  return (
+    <div onClick={handleClick}>
+      {
+        like ? 
+          <AiFillHeart
+            size={30}
+            color='red'
+          /> :
+          <AiOutlineHeart
+            size={30}
+          />
+      }
+    </div>
+  )
+}
