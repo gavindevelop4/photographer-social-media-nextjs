@@ -10,6 +10,19 @@ import InfoButton from '../infoButton/infoButton';
 export default function Feed() {
   return (
     <div className={styles.feed}>
+      <div className={styles.user}>
+        <div className={styles.avatar}>
+          <Image
+            src="https://picsum.photos/20"
+            fill
+            alt="feed"
+          />
+        </div>
+        <div className={styles.userName}>
+          Username
+        </div>
+      </div>
+
       <div className={styles.image}>
         <Image
           src="https://picsum.photos/2000"
@@ -21,15 +34,16 @@ export default function Feed() {
 
       <div className={styles.actionBar}>
         <LikeButton
+          className={styles.button}
           isLiked={true}
           onChange={(like) => { console.log(like) }}
         />
 
-        <CommentButton />
+        <CommentButton className={styles.button}/>
 
-        <ShareButton />
+        <ShareButton className={styles.button}/>
 
-        <InfoButton />
+        <InfoButton className={styles.button}/>
       </div>
     </div>
   )

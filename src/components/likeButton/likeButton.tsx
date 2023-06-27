@@ -6,9 +6,10 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 interface LikeButtonProps {
   isLiked: boolean
   onChange: (a: boolean) => void;
+  className: string
 }
 
-export default function LikeButton({ isLiked, onChange }: LikeButtonProps) {
+export default function LikeButton({ isLiked, onChange, className }: LikeButtonProps) {
   const [like, setLike] = useState<boolean>(isLiked);
   
   const handleClick = () => {
@@ -17,7 +18,7 @@ export default function LikeButton({ isLiked, onChange }: LikeButtonProps) {
   }
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={ handleClick } className={className}>
       {
         like ? 
           <AiFillHeart

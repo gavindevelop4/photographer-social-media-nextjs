@@ -1,12 +1,16 @@
 import { GrCircleInformation } from 'react-icons/gr'
 
-export default function InfoButton() {
+interface InfoButtonProps {
+  className: string;
+}
+
+export default function InfoButton({className}: InfoButtonProps) {
   const handleClick = () => {
     console.log('click info button');
   }
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} className={className}>
       <GrCircleInformation
         size={30}
       />

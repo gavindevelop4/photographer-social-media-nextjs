@@ -7,31 +7,31 @@ import { GoHomeFill } from 'react-icons/go'
 export default function BottomNavBar() {
   return (
     <div className={styles.bottomNavBar}>
-      <div>
+      <div className={styles.button}>
         <GoHomeFill
           size={30}
         />
       </div>
 
-      <div>
+      <div className={styles.button}>
         <FaSearch
           size={25}
         />
       </div>
 
-      <div>
+      <div className={styles.button}>
         <BiSolidMessageAltAdd
           size={30}
         />
       </div>
 
-      <div>
+      <div className={styles.button}>
         <AiOutlineMessage
           size={28}
         />
       </div>
 
-      <div>
+      <div className={styles.button}>
         <FaUser
           size={25}
         />

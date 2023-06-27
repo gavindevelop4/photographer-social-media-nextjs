@@ -1,12 +1,16 @@
 import { FiShare } from 'react-icons/fi'
 
-export default function ShareButton() {
+interface ShareButtonProps {
+  className: string;
+}
+
+export default function ShareButton({className}: ShareButtonProps) {
   const handleClick = () => {
     console.log('click comment button');
   }
 
   return (
-    <div onClick={handleClick}>
+    <div className={className} onClick={handleClick}>
       <FiShare
         size={30}
       />

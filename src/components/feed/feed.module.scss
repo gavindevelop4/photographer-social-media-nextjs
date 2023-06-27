@@ -1,4 +1,28 @@
 .feed {
+  .user {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 10px;
+
+    .avatar {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+
   .image {
     position: relative;
 
@@ -12,7 +36,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    column-gap: 10px;
+    column-gap: 15px;
     padding: 5px 10px;
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
