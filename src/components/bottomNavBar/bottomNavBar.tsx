@@ -1,20 +1,21 @@
 import styles from './bottomNavBar.module.scss';
-import { AiFillHome } from 'react-icons/ai'
-import { BsSearch, BsChat } from 'react-icons/bs'
+import { AiOutlineMessage } from 'react-icons/ai'
 import { BiSolidMessageAltAdd, BiSolidUser } from 'react-icons/bi'
+import { FaSearch, FaUser } from 'react-icons/fa'
+import { GoHomeFill } from 'react-icons/go'
 
-export default function bottomNavBar() {
+export default function BottomNavBar() {
   return (
     <div className={styles.bottomNavBar}>
       <div>
-        <AiFillHome
+        <GoHomeFill
           size={30}
         />
       </div>
 
       <div>
-        <BsSearch
-          size={30}
+        <FaSearch
+          size={25}
         />
       </div>
 
@@ -25,14 +26,14 @@ export default function bottomNavBar() {
       </div>
 
       <div>
-        <BsChat
-          size={30}
+        <AiOutlineMessage
+          size={28}
         />
       </div>
 
       <div>
-        <BiSolidUser
-          size={30}
+        <FaUser
+          size={25}
         />
       </div>
     </div>
