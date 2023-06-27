@@ -1,0 +1,12 @@
+@import '../../app/variables.scss';
+
+.bottomNavBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba($background, 0.6), rgba($background, 0.8));
+}

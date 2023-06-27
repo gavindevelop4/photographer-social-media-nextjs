@@ -2,7 +2,7 @@ import { GrCircleInformation } from 'react-icons/gr'
 
 export default function InfoButton() {
   const handleClick = () => {
-    console.log('click comment button');
+    console.log('click info button');
   }
 
   return (

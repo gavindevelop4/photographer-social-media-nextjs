@@ -6,6 +6,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Feed />
+      <Feed />
+      <Feed />
+      <Feed />
+
       {/* <Link href="/about">About</Link> */}
     </main>
   )
