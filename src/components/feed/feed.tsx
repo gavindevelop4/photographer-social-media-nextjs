@@ -3,6 +3,9 @@
 import styles from './feed.module.scss'
 import Image from 'next/image'
 import LikeButton from '../likeButton/likeButton'
+import CommentButton from '../commentButton/commentButton';
+import ShareButton from '../shareButton/shareButton';
+import InfoButton from '../infoButton/infoButton';
 
 export default function Feed() {
   return (
@@ -16,11 +19,17 @@ export default function Feed() {
         />
       </div>
 
-      <div>
+      <div className={styles.actionBar}>
         <LikeButton
           isLiked={true}
           onChange={(like) => { console.log(like) }}
         />
+
+        <CommentButton />
+
+        <ShareButton />
+
+        <InfoButton />
       </div>
     </div>
   )
