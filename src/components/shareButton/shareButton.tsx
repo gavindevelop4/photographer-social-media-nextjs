@@ -6,7 +6,7 @@ interface ShareButtonProps {
 
 export default function ShareButton({className}: ShareButtonProps) {
   const handleClick = () => {
-    console.log('click comment button');
+    console.log('click share button');
   }
 
   return (
