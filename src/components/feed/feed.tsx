@@ -6,26 +6,37 @@ import LikeButton from '../likeButton/likeButton'
 import CommentButton from '../commentButton/commentButton';
 import ShareButton from '../shareButton/shareButton';
 import InfoButton from '../infoButton/infoButton';
+import { FeedData } from '@/models/FeedData';
+import { useAppSelector } from '@/store/hooks';
+import { UserData } from '@/models/UserData';
 
-export default function Feed() {
+interface FeedProps {
+  feed: FeedData;
+}
+
+export default function Feed({ feed }: FeedProps) {
+  const currentUser: UserData = useAppSelector((state) => state.userReducer.value);
+  const foundLikedUser: UserData | undefined = feed.likedUser.find((userItem) => userItem.id === currentUser.id);
+  const isLiked = foundLikedUser !== undefined
+
   return (
     <div className={styles.feed}>
       <div className={styles.user}>
         <div className={styles.avatar}>
           <Image
-            src="https://picsum.photos/20"
+            src={ feed.user.avatar }
             fill
-            alt="feed"
+            alt="avatar"
           />
         </div>
         <div className={styles.userName}>
-          Username
+          {feed.user.username}
         </div>
       </div>
 
       <div className={styles.image}>
         <Image
-          src="https://picsum.photos/2000"
+          src={ feed.image }
           fill
           alt="feed"
           sizes='100vw'
@@ -35,7 +46,7 @@ export default function Feed() {
       <div className={styles.actionBar}>
         <LikeButton
           className={styles.button}
-          isLiked={true}
+          isLiked={ isLiked }
           onChange={(like) => { console.log(like) }}
         />
 
@@ -44,6 +55,17 @@ export default function Feed() {
         <ShareButton className={styles.button}/>
 
         <InfoButton className={styles.button}/>
+      </div>
+
+      <div className={styles.details}>
+        <div>
+          <span>
+            { feed.user.username }
+          </span>
+          <span>
+            { feed.likedUser.length } likes
+          </span>
+        </div>
       </div>
     </div>
   )
