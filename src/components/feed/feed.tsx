@@ -91,8 +91,6 @@ export default function Feed({ feed }: FeedProps) {
               })
             : <div className={styles.viewAllComments}>View All Comments</div>
           }
-
-          
         </div>
       </div>
     </div>

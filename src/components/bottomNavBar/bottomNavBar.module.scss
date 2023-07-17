@@ -8,7 +8,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: linear-gradient(to bottom, rgba($background, 0.6), rgba($background, 0.8));
+  // background: linear-gradient(to bottom, rgba($background, 0.6), rgba($background, 0.8));
+  background-color: $background;
 
   .button {
     width: 30px;
