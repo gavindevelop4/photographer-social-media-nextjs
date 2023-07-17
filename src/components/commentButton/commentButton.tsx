@@ -2,11 +2,13 @@ import { FaRegComment } from 'react-icons/fa'
 
 interface CommentButtonProps {
   className: string;
+  onClick: () => void;
 }
 
-export default function CommentButton({className}: CommentButtonProps) {
+export default function CommentButton({className, onClick}: CommentButtonProps) {
   const handleClick = () => {
     console.log('click comment button');
+    onClick();
   }
 
   return (

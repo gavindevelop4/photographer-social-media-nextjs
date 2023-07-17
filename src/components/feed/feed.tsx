@@ -9,15 +9,22 @@ import InfoButton from '../infoButton/infoButton';
 import { FeedData } from '@/models/FeedData';
 import { useAppSelector } from '@/store/hooks';
 import { UserData } from '@/models/UserData';
+import { useState } from 'react';
+import { feed1 } from '@/mockData/FeedList';
 
 interface FeedProps {
   feed: FeedData;
+  onClickShowComments: (a: FeedData) => void;
 }
 
-export default function Feed({ feed }: FeedProps) {
+export default function Feed({ feed, onClickShowComments }: FeedProps) {
   const currentUser: UserData = useAppSelector((state) => state.userReducer.value);
   const foundLikedUser: UserData | undefined = feed.likedUser.find((userItem) => userItem.id === currentUser.id);
   const isLiked = foundLikedUser !== undefined
+
+  const handleShowCommentTab = (): void => {
+    onClickShowComments(feed);
+  };
 
   return (
     <div className={styles.feed}>
@@ -50,7 +57,10 @@ export default function Feed({ feed }: FeedProps) {
           onChange={(like) => { console.log(like) }}
         />
 
-        <CommentButton className={styles.button}/>
+        <CommentButton
+          className={styles.button}
+          onClick={handleShowCommentTab}
+        />
 
         <ShareButton className={styles.button}/>
 
@@ -63,7 +73,7 @@ export default function Feed({ feed }: FeedProps) {
         </div>
 
         <div className={styles.title}>
-          <span className={styles.username}>
+          <span className='username'>
             { feed.user.username }
           </span>
           <span className={styles.caption}>
@@ -80,7 +90,7 @@ export default function Feed({ feed }: FeedProps) {
                     className={styles.comment}
                     key={comment.id}
                   >
-                    <span className={styles.username}>
+                    <span className='username'>
                       {comment.user.username}
                     </span>
                     <span className={styles.content}>
@@ -89,7 +99,10 @@ export default function Feed({ feed }: FeedProps) {
                   </div>
                 )
               })
-            : <div className={styles.viewAllComments}>View All Comments</div>
+              : <div
+                className={styles.viewAllComments}
+                onClick={handleShowCommentTab}
+              >View All Comments</div>
           }
         </div>
       </div>
