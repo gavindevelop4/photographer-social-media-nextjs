@@ -21,7 +21,7 @@ export default function Feed({ feed }: FeedProps) {
 
   return (
     <div className={styles.feed}>
-      <div className={styles.user}>
+      <div className={styles.user_section}>
         <div className={styles.avatar}>
           <Image
             src={ feed.user.avatar }
@@ -34,7 +34,7 @@ export default function Feed({ feed }: FeedProps) {
         </div>
       </div>
 
-      <div className={styles.image}>
+      <div className={styles.image_section}>
         <Image
           src={ feed.image }
           fill
@@ -57,14 +57,42 @@ export default function Feed({ feed }: FeedProps) {
         <InfoButton className={styles.button}/>
       </div>
 
-      <div className={styles.details}>
-        <div>
-          <span>
+      <div className={styles.detail_section}>
+        <div className={styles.likes}>
+            { feed.likedUser.length } likes
+        </div>
+
+        <div className={styles.title}>
+          <span className={styles.username}>
             { feed.user.username }
           </span>
-          <span>
-            { feed.likedUser.length } likes
+          <span className={styles.caption}>
+            { feed.caption }
           </span>
+        </div>
+
+        <div className={styles.comments_section}>
+          {
+            feed.comments.length < 3 ?
+              feed.comments.map((comment) => {
+                return (
+                  <div
+                    className={styles.comment}
+                    key={comment.id}
+                  >
+                    <span className={styles.username}>
+                      {comment.user.username}
+                    </span>
+                    <span className={styles.content}>
+                      {comment.comment}
+                    </span>
+                  </div>
+                )
+              })
+            : <div className={styles.viewAllComments}>View All Comments</div>
+          }
+
+          
         </div>
       </div>
     </div>
