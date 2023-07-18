@@ -1,7 +1,15 @@
 import { UserData } from '@/models/UserData';
 import { CommentData } from './CommentData';
 
-export class FeedData {
+export interface FeedInterface {
+  id: number;
+  user: UserData;
+  image: string;
+  caption: string;
+  likedUser: Array<UserData>;
+  comments: Array<CommentData>;
+}
+export class FeedData implements FeedInterface {
   id: number;
   user: UserData;
   image: string;
@@ -9,7 +17,16 @@ export class FeedData {
   likedUser: Array<UserData>
   comments: Array<CommentData>
 
-  constructor(id: number, user: UserData, image: string, caption: string,likedUser: Array<UserData>, comments: Array<CommentData>) {
+  constructor(
+    {
+      id,
+      user,
+      image,
+      caption,
+      likedUser,
+      comments,
+    }: FeedInterface
+  ) {
     this.id = id;
     this.user = user;
     this.image = image;

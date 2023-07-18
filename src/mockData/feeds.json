@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "userId": 1,
+      "image": "https://picsum.photos/2000",
+      "caption": "New Photo!",
+      "likedUserId": [
+        1,
+        2,
+        3
+      ],
+      "commentsId": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "image": "https://picsum.photos/2000",
+      "caption": "New Photo 2!",
+      "likedUserId": [
+        1
+      ],
+      "commentsId": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "image": "https://picsum.photos/2000",
+      "caption": "New Photo 3!",
+      "likedUserId": [
+      ],
+      "commentsId": [
+      ]
+    }
+  ]
+}

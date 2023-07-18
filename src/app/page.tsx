@@ -4,17 +4,28 @@ import styles from './page.module.scss'
 import Feed from '../components/feed/feed'
 // import Link from 'next/link'
 import userList, { user01 } from '@/mockData/UserList';
-import feedList from '@/mockData/FeedList';
 import { UserData } from '@/models/UserData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FeedData } from '@/models/FeedData';
 import CommentTab from '@/components/commentTab/commentTab';
+import { useAppDispatch } from '@/store/hooks';
+import { getFeeds } from '@/store/slices/feedSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 export default function Home() {
+  const dispatch = useAppDispatch()
+
   const currentUser: UserData = user01;
 
   let [showCommentTab, setShowCommentTab] = useState(false);
   let [selectedFeed, setSelectedFeed] = useState<FeedData>();
+
+  const feedsList: FeedData[] = useSelector((state: RootState) => state.feedReducer.value);
+
+  useEffect(() => {
+    dispatch(getFeeds());
+  }, []);
 
   const handleShowCommentTab = (feed: FeedData): void => {
     setShowCommentTab(true);
@@ -29,7 +40,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       {
-        feedList.map((feed) => <Feed
+        feedsList.map((feed) => <Feed
           key={feed.id}
           feed={feed}
           onClickShowComments={handleShowCommentTab}

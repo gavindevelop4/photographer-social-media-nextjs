@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "username": "alex",
+      "avatar": "https://picsum.photos/20"
+    },
+    {
+      "id": 2,
+      "username": "alex",
+      "avatar": "https://picsum.photos/20"
+    },
+    {
+      "id": 3,
+      "username": "alex",
+      "avatar": "https://picsum.photos/20"
+    }
+  ]
+}
