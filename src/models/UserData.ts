@@ -1,4 +1,10 @@
-export class UserData {
+export interface UserInterface {
+  id: number;
+  username: string;
+  avatar: string;
+}
+
+export class UserData implements UserInterface {
   id: number;
   username: string;
   avatar: string;
@@ -7,5 +13,9 @@ export class UserData {
     this.id = id;
     this.username = username;
     this.avatar = avatar;
+  }
+
+  static fromJson({id, username, avatar}: UserInterface): UserData {
+    return new UserData(id, username, avatar);
   }
 }

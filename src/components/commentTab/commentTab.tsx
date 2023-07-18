@@ -1,5 +1,6 @@
 import { FeedData } from '@/models/FeedData';
 import styles from './commentTab.module.scss'
+import { useEffect, UIEvent } from 'react';
 
 interface CommentTabProps {
   feed: FeedData | undefined;
@@ -7,10 +8,21 @@ interface CommentTabProps {
   onClose: () => void;
 }
 
-export default function CommentTab({feed, show, onClose}: CommentTabProps) {
+export default function CommentTab({ feed, show, onClose }: CommentTabProps) {
+  const handleScroll = (event: UIEvent<HTMLDivElement>) => {
+    console.log('scroll')
+    event.preventDefault();
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', (event) => {
+      event.preventDefault();
+    })
+  }, [])  
+
   return (
     <div className={`${styles.commentTab} ${show ? styles.show : ''}`}>
-      <div className={styles.overlay} onClick={onClose}></div>
+      <div className={styles.overlay} onClick={onClose} onScroll={handleScroll}></div>
       <div className={styles.container}>
         <div className={styles.title}>
           Comments

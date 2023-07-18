@@ -1,6 +1,12 @@
-import { UserData } from '@/models/UserData';
+import { UserData, UserInterface } from '@/models/UserData';
 
-export class CommentData {
+export interface CommentInterface {
+  id: number;
+  user: UserInterface;
+  comment: string;
+}
+
+export class CommentData implements CommentInterface{
   id: number;
   user: UserData;
   comment: string;
@@ -9,5 +15,11 @@ export class CommentData {
     this.id = id;
     this.user = user;
     this.comment = comment;
+  }
+
+  static fromJson({ id, user, comment }: CommentInterface): CommentData {
+    const mapUser = UserData.fromJson(user);
+
+    return new CommentData(id, mapUser, comment);
   }
 }

@@ -1,6 +1,6 @@
-import { FeedData, FeedInterface } from "@/models/FeedData";
-import { getList } from "@/repository/feeds";
+import { UserData, UserInterface } from "@/models/UserData";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getLogin } from "@/repository/users";
 import { AxiosError } from "axios";
 
 interface ValidationErrors {
@@ -8,11 +8,11 @@ interface ValidationErrors {
   field_errors: Record<string, string>
 }
 
-export const getFeeds = createAsyncThunk(
-  'feed/getFeeds',
+export const login = createAsyncThunk(
+  'user/login',
   async () => {
     try {
-      const response = await getList();
+      const response = await getLogin();
       return response.data;
     } catch (err) {
       let error = err as AxiosError<ValidationErrors>; // cast the error for access
@@ -24,50 +24,49 @@ export const getFeeds = createAsyncThunk(
     }
   }
 )
-
-interface FeedState {
-  value: Array<FeedData>;
+interface UserState {
+  value: UserData | null;
   loading: 'idle' | 'pending' | 'succeeded' | 'failed';
   error: any;
-}
+};
 
-const initalFeedState = {
-  value: [],
+const initalUserState = {
+  value: null,
   loading: 'idle',
   error: null
-} as FeedState;
+} as UserState;
 
-export const feedSlice = createSlice({
-  name: "feed",
-  initialState: initalFeedState,
+export const userSlice = createSlice({
+  name: "user",
+  initialState: initalUserState,
   reducers: {
-    reset: () => initalFeedState,
+    reset: () => initalUserState,
   },
   extraReducers: (builder) => {
-    builder.addCase(getFeeds.fulfilled, (state, action) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       console.log(action.payload);
 
       state.loading = 'succeeded'
 
-      const resultList = action.payload.data as Array<FeedInterface>;
+      const result = action.payload.data as UserInterface;
+      const user = UserData.fromJson(result);
 
-      const list = resultList.map((item: FeedInterface) => new FeedData(item))
-      state.value = list;
-    })
+      state.value = user;
+    });
 
-    builder.addCase(getFeeds.pending, (state) => {
+    builder.addCase(login.pending, (state) => {
       state.loading = 'pending'
-    })
+    });
 
-    builder.addCase(getFeeds.rejected, (state, action) => {
+    builder.addCase(login.rejected, (state, action) => {
       state.loading = 'failed'
       state.error = action.error.message
-    })
+    });
   }
 })
 
 export const {
-  reset
-} = feedSlice.actions;
+  reset,
+} = userSlice.actions;
 
-export default feedSlice.reducer;
+export default userSlice.reducer;

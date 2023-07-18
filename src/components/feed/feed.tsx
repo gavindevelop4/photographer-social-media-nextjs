@@ -9,8 +9,6 @@ import InfoButton from '../infoButton/infoButton';
 import { FeedData } from '@/models/FeedData';
 import { useAppSelector } from '@/store/hooks';
 import { UserData } from '@/models/UserData';
-import { useState } from 'react';
-import { feed1 } from '@/mockData/FeedList';
 
 interface FeedProps {
   feed: FeedData;
@@ -18,8 +16,8 @@ interface FeedProps {
 }
 
 export default function Feed({ feed, onClickShowComments }: FeedProps) {
-  const currentUser: UserData = useAppSelector((state) => state.userReducer.value);
-  const foundLikedUser: UserData | undefined = feed.likedUser.find((userItem) => userItem.id === currentUser.id);
+  const currentUser: UserData | null = useAppSelector((state) => state.usersReducer.value);
+  const foundLikedUser: UserData | undefined = feed.likedUser.find((userItem) => userItem.id === currentUser?.id);
   const isLiked = foundLikedUser !== undefined
 
   const handleShowCommentTab = (): void => {

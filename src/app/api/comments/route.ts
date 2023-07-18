@@ -3,7 +3,6 @@ import users from '@/mockData/users.json';
 import comments from '@/mockData/comments.json';
 
 import { NextResponse } from 'next/server';
-import { NextApiRequest } from 'next';
 
 export async function GET(req: Request) {
   // const numberId = parseInt(params.feedId);

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from './slices/counterSlice'
-import userReducer from './slices/userSlice'
-import feedReducer from './slices/feedSlice'
+import usersReducer from './slices/usersSlice'
+import feedReducer from './slices/feedsSlice'
 
 export const store = configureStore({
   reducer: {
     counterReducer,
-    userReducer,
+    usersReducer,
     feedReducer
   },
   devTools: process.env.NODE_ENV !== "production",
