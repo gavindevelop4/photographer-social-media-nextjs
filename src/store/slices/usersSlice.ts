@@ -44,8 +44,6 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      console.log(action.payload);
-
       state.loading = 'succeeded'
 
       const result = action.payload.data as UserInterface;

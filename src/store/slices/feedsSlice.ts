@@ -45,13 +45,11 @@ export const feedsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getFeeds.fulfilled, (state, action) => {
-      console.log(action.payload);
-
       state.loading = 'succeeded'
 
       const resultList = action.payload.data as Array<FeedInterface>;
-
       const list = resultList.map((item: FeedInterface) => FeedData.fromJson(item))
+      
       state.value = list;
     });
 
